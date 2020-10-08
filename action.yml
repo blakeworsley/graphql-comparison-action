@@ -1,11 +1,16 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Compare Graphql Schemas'
+description: 'Take the local branches schema and compare it with a remote graphql schema'
+author: 'Blake Worsley'
 inputs:
-  milliseconds: # change this
+  local-schema-path:
+    description: 'Path to your graphql.schema file from the root of your project'
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  remote-schema-endpoint:
+    required: true
+    description: 'Url to the graphql endpoint you would like to use'
+  remote-schema-auth-token:
+    required: false
+    description: 'Auth token for graphql request'
 runs:
   using: 'node12'
   main: 'dist/index.js'

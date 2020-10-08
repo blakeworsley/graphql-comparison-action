@@ -1,16 +1,17 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const localSchemaPath: string = core.getInput('local-schema-path')
+    const remoteSchemaEndpoint: string = core.getInput('remote-schema-endpoint')
+    const remoteSchemaAuthToken: string = core.getInput(
+      'remote-schema-auth_token'
+    )
+    core.debug(`localSchemaPath -- ${localSchemaPath}`)
+    core.debug(`remoteSchemaEndpoint -- ${remoteSchemaEndpoint}`)
+    core.debug(`remoteSchemaAuthToken -- ${remoteSchemaAuthToken}`)
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
-
-    core.setOutput('time', new Date().toTimeString())
+    core.setOutput('localSchemaPath', localSchemaPath)
   } catch (error) {
     core.setFailed(error.message)
   }
