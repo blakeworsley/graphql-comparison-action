@@ -3,9 +3,6 @@ import * as cp from 'child_process'
 import * as path from 'path'
 
 // shows how the runner will run a javascript action with env / stdout protocol
-test('generate function works', () => {
-  runGenerate()
-})
 
 test('test runs', () => {
   process.env['localSchemaPath'] = 'thinkkkkkk'
@@ -17,3 +14,4 @@ test('test runs', () => {
   }
   console.log(cp.execSync(`node ${ip}`, options).toString())
 })
+6
